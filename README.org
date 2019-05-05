@@ -1,4 +1,4 @@
-* forune-go
+* fortune-go
 
 My implementation linux fortune on golang.
 
