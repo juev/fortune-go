@@ -7,3 +7,14 @@ I will use fortune database from homebrew.
 ** Alternatives
 
 [[https://github.com/bmc/fortunes][fortunes]]
+
+** Creating custom files
+
+In order to create a custom file, you must first create a file containing the quotes.
+Between each quote you must add a line containing only the % character. 
+Save this file using whatever name you want, for example myquotes. 
+Then, run ~strfile myquotes~ in a terminal, in order to enable random access of the quotes. 
+You can now access the quotes by executing fortune myquotes in a terminal. 
+For this command to work you must be on the same directory as the ~myquotes~ and ~myquotes.dat~ files. 
+If you want your quotes to be accessible by just running the fortune command, you must move both files into the =/usr/share/fortune/= directory. 
+If you want to make any changes to your file, repeat from the start. 
