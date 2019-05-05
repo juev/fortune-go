@@ -1,0 +1,5 @@
+* forune-go
+
+My implementation linux fortune on golang.
+
+I will use fortune database from homebrew.
