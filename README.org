@@ -23,3 +23,19 @@ If you want to make any changes to your file, repeat from the start.
 
  [[https://linux.die.net/man/1/strfile][man]]
  *strfile* reads a file containing groups of lines separated by a line containing a single percent '%' sign (or other specified delimiter character) and creates a data file which contains a header structure and a table of file offsets for each group of lines. This allows random access of the strings. 
+
+*** The format of the header is
+
+#+BEGIN_SRC cpp
+#define	VERSION	1 
+uint32_t	str_version;	/* version number */ 
+uint32_t	str_numstr;	/* # of strings in the file */ 
+uint32_t	str_longlen;	/* length of longest string */ 
+uint32_t	str_shortlen;	/* length of shortest string */ 
+#define	STR_RANDOM	0x1	/* randomized pointers */ 
+#define	STR_ORDERED	0x2	/* ordered pointers */ 
+#define	STR_ROTATED	0x4	/* rot-13'd text */ 
+#define	STR_COMMENTS	0x8	/* embedded comments */ 
+uint32_t	str_flags;	/* bit field for flags */ 
+char		str_delim;	/* delimiting character */
+#+END_SRC
