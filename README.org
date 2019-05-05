@@ -20,5 +20,6 @@ If you want your quotes to be accessible by just running the fortune command, yo
 If you want to make any changes to your file, repeat from the start. 
 
  *** strfile
+ 
  [[https://linux.die.net/man/1/strfile][man]
  *strfile* reads a file containing groups of lines separated by a line containing a single percent '%' sign (or other specified delimiter character) and creates a data file which contains a header structure and a table of file offsets for each group of lines. This allows random access of the strings. 
