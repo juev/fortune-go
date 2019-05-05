@@ -3,3 +3,7 @@
 My implementation linux fortune on golang.
 
 I will use fortune database from homebrew.
+
+** Alternatives
+
+[[https://github.com/bmc/fortunes][fortunes]]
