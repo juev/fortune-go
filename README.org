@@ -44,5 +44,7 @@ char		str_delim;	/* delimiting character */
 
 [[https://en.wikipedia.org/wiki/Fortune_(Unix)][Fortune]]
 
-* TODO Implementing read directory
-* TODO Adding recognise fortune dat files
+*** TODO Implementing read directory
+*** TODO Adding recognise fortune dat files
+** fortune-mod
+- [[https://github.com/shlomif/fortune-mod][fortune-mod]] on Github
