@@ -43,3 +43,6 @@ char		str_delim;	/* delimiting character */
 ** Description
 
 [[https://en.wikipedia.org/wiki/Fortune_(Unix)][Fortune]]
+
+* TODO Implementing read directory
+* TODO Adding recognise fortune dat files
