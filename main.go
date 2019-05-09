@@ -30,10 +30,9 @@ func main() {
 	}
 
 	fortunes := strings.Split(string(dat), "\n%\n")
-	length := len(fortunes)
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
-	rnd := r1.Intn(length)
+	rnd := r1.Intn(len(fortunes))
 
 	fmt.Println(fortunes[rnd])
 }
