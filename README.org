@@ -4,9 +4,9 @@ My implementation linux fortune on golang.
 
 I will use fortune database from homebrew.
 
-** Alternatives
+** Data files alternatives
 
-[[https://github.com/bmc/fortunes][fortunes]]
+Repository: [[https://github.com/bmc/fortunes][fortunes]]
 
 ** Creating custom files
 
@@ -41,10 +41,21 @@ char		str_delim;	/* delimiting character */
 #+END_SRC
 
 ** Description
+Wiki: [[https://en.wikipedia.org/wiki/Fortune_(Unix)][Fortune]]
 
-[[https://en.wikipedia.org/wiki/Fortune_(Unix)][Fortune]]
+Souce code:  [[https://github.com/shlomif/fortune-mod][fortune-mod]] on Github
 
+** TODOS
 *** TODO Implementing read directory
 *** TODO Adding recognise fortune dat files
-** fortune-mod
-- [[https://github.com/shlomif/fortune-mod][fortune-mod]] on Github
+*** TODO Adding check for fortunes file
+It is regular file, is visible (filename not started with dot) and filename do not have "illegal" suffixes.
+
+Suffixes:
+
+#+BEGIN_SRC cpp
+"dat", "pos", "c", "h", "p", "i", "f",
+"pas", "ftn", "ins.c", "ins,pas",
+"ins.ftn", "sml",
+NULL
+#+END_SRC
