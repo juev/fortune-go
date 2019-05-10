@@ -1,0 +1,44 @@
+
+** Creating custom files
+
+In order to create a custom file, you must first create a file containing the quotes.
+Between each quote you must add a line containing only the % character.
+Save this file using whatever name you want, for example myquotes.
+Then, run ~strfile myquotes~ in a terminal, in order to enable random access of the quotes.
+You can now access the quotes by executing fortune myquotes in a terminal.
+For this command to work you must be on the same directory as the ~myquotes~ and ~myquotes.dat~ files.
+If you want your quotes to be accessible by just running the fortune command, you must move both files into the =/usr/share/fortune/= directory.
+If you want to make any changes to your file, repeat from the start.
+
+*** Strfile
+
+ [[https://linux.die.net/man/1/strfile][man]]
+ *strfile* reads a file containing groups of lines separated by a line containing a single percent '%' sign (or other specified delimiter character) and creates a data file which contains a header structure and a table of file offsets for each group of lines. This allows random access of the strings.
+
+*** The format of the header is
+
+#+BEGIN_SRC cpp
+#define	VERSION	1
+uint32_t	str_version;	/* version number */
+uint32_t	str_numstr;	/* # of strings in the file */
+uint32_t	str_longlen;	/* length of longest string */
+uint32_t	str_shortlen;	/* length of shortest string */
+#define	STR_RANDOM	0x1	/* randomized pointers */
+#define	STR_ORDERED	0x2	/* ordered pointers */
+#define	STR_ROTATED	0x4	/* rot-13'd text */
+#define	STR_COMMENTS	0x8	/* embedded comments */
+uint32_t	str_flags;	/* bit field for flags */
+char		str_delim;	/* delimiting character */
+#+END_SRC
+
+** Description
+It is regular file, is visible (filename not started with dot) and filename do not have "illegal" suffixes.
+
+Suffixes:
+
+#+BEGIN_SRC cpp
+"dat", "pos", "c", "h", "p", "i", "f",
+"pas", "ftn", "ins.c", "ins,pas",
+"ins.ftn", "sml",
+NULL
+#+END_SRC

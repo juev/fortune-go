@@ -1,0 +1,4 @@
+** TODOS
+*** TODO Implementing read directory
+*** TODO Adding recognise fortune dat files
+*** TODO Adding check for fortunes file
