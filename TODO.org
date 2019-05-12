@@ -1,4 +1,8 @@
 ** TODOS
-*** TODO Implementing read directory
-*** TODO Adding recognise fortune dat files
-*** TODO Adding check for fortunes file
+*** DONE Implementing read directory
+*** DONE Adding recognise fortune dat files
+*** TODO Need to adding work with dat files
+For using less memory we need to use fortunes dat files, insted ioutil.ReadFile
+**** TODO Fortune dat-files
+Find informtaion how to use fortune dat-files
+**** TODO Adding check for fortunes dat files
