@@ -16,6 +16,10 @@ var (
 	filename = kingpin.Arg("filename", "Fortune filename").Default(".").String()
 )
 
+// Read filename from command line, and check if this filename is file, after
+// that  just printFortune. If filenmae is directory, we get all filenames from
+// directory and check if this file is fortune we adding filename to slice.
+// After that we get random filename and then printForune with this filename.
 func main() {
 	kingpin.Version("0.0.1")
 	kingpin.Parse()
@@ -45,6 +49,11 @@ func main() {
 	}
 }
 
+// First version printFortune.
+// Just read full file to memory, after that split to '/n%/n' and
+// printing random fortunes.
+//
+// TODO We need to change this to reading a part of file.
 func printFortune(filename string) {
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -59,6 +68,9 @@ func printFortune(filename string) {
 	fmt.Println(fortunes[rnd])
 }
 
+// If we have filename and file with filename.dat, we then we think that this
+// fortune file.
+// We check that the filename exists, and filename.dat exist too
 func isFortune(filename string) bool {
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return false
