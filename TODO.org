@@ -6,3 +6,6 @@ For using less memory we need to use fortunes dat files, insted ioutil.ReadFile
 **** TODO Fortune dat-files
 Find informtaion how to use fortune dat-files
 **** TODO Adding check for fortunes dat files
+*** TODO Adding =-l= =-s= arguments for long and short fortunes
+We need check what len for fortune. If we have =-l= argument we skip all fortunes with len <= SLEN (160 symbols).
+And if we have =-s= argument we skip all fortunes with len > SLEN
