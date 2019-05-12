@@ -24,13 +24,8 @@ func main() {
 	if err != nil {
 		log.Fatal(*filename + " is not exist...")
 	}
-	var dat []byte
 	if fi.Mode().IsRegular() {
-		dat, err = ioutil.ReadFile(*filename)
-		if err != nil {
-			log.Fatal("Cannot open " + *filename + " filename...")
-		}
-		printFortune(string(dat))
+		printFortune(*filename)
 	} else if fi.Mode().IsDir() {
 		files, err := ioutil.ReadDir(*filename)
 		if err != nil {
@@ -39,38 +34,38 @@ func main() {
 
 		var forts []string
 		for _, file := range files {
-			if isFortune(file.Name()) {
-				forts = append(forts, file.Name())
+			if isFortune(*filename + "/" + file.Name()) {
+				forts = append(forts, *filename+"/"+file.Name())
 			}
 		}
-		println(forts)
+		s1 := rand.NewSource(time.Now().UnixNano())
+		r1 := rand.New(s1)
+		rnd := r1.Intn(len(forts))
+		printFortune(forts[rnd])
 	}
 }
 
-func printFortune(data string) {
-	fortunes := strings.Split(data, "\n%\n")
+func printFortune(filename string) {
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatal("Cannot open " + filename + " filename...")
+	}
+
+	fortunes := strings.Split(string(data), "\n%\n")
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 	rnd := r1.Intn(len(fortunes))
 
 	fmt.Println(fortunes[rnd])
-
 }
 
 func isFortune(filename string) bool {
-	fi, err := os.Stat(filename)
-	if err != nil {
-		log.Fatal(filename + " is not exist...")
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		return false
 	}
 
-	if fi.Mode().IsRegular() {
-		fidat, err := os.Stat(filename + ".dat")
-		if err != nil {
-			log.Fatal(filename + ".dat is not exist...")
-		}
-		if fidat.Mode().IsRegular() {
-			return true
-		}
+	if _, err := os.Stat(filename + ".dat"); os.IsNotExist(err) {
+		return false
 	}
-	return false
+	return true
 }
