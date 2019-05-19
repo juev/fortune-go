@@ -29,7 +29,9 @@ func main() {
 		log.Fatal(*filename + " is not exist...")
 	}
 	if fi.Mode().IsRegular() {
-		printFortune(*filename)
+		if isFortune(*filename) {
+			printFortune(*filename)
+		}
 	} else if fi.Mode().IsDir() {
 		files, err := ioutil.ReadDir(*filename)
 		if err != nil {
